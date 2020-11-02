@@ -136,6 +136,7 @@ export function CurrencySearch({
   )
 
   const selectedListInfo = useSelectedListInfo()
+  console.log('****')
 
   return (
     <Column style={{ width: '100%', flex: '1 1' }}>

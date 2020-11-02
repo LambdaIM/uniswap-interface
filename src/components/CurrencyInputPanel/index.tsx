@@ -205,6 +205,7 @@ export default function CurrencyInputPanel({
             className="open-currency-select-button"
             onClick={() => {
               if (!disableCurrencySelect) {
+                console.log('- -')
                 setModalOpen(true)
               }
             }}
@@ -230,6 +231,7 @@ export default function CurrencyInputPanel({
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}
             </Aligner>
+           
           </CurrencySelect>
         </InputRow>
       </Container>

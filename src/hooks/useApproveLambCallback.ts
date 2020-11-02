@@ -9,8 +9,7 @@ import { Field } from '../state/swap/actions'
 import { useTransactionAdder, useHasPendingApproval } from '../state/transactions/hooks'
 import { computeSlippageAdjustedAmounts } from '../utils/prices'
 import { calculateGasMargin } from '../utils'
-// import { useTokenContract} from './useContract'
-import { useTokenContract , useTokenContractLamb } from './useContract'
+import { useTokenContractLamb } from './useContract'
 import { useActiveWeb3React } from './index'
 import { Version } from './useToggledVersion'
 
@@ -27,6 +26,7 @@ export function useApproveCallback(
   spender?: string
 ): [ApprovalState, () => Promise<void>] {
   const { account } = useActiveWeb3React()
+
   const token = amountToApprove instanceof TokenAmount ? amountToApprove.token : undefined
   const currentAllowance = useTokenAllowance(token, account ?? undefined, spender)
   const pendingApproval = useHasPendingApproval(token?.address, spender)
@@ -46,10 +46,8 @@ export function useApproveCallback(
       : ApprovalState.APPROVED
   }, [amountToApprove, currentAllowance, pendingApproval, spender])
   
-  console.log('tokenContract======================')
-
-  const   tokenContract = useTokenContract(token?.address)
-  const   tokenContractLamb = useTokenContractLamb(token?.address)
+  
+  const   tokenContract = useTokenContractLamb(token?.address)
   
 
 
@@ -71,11 +69,6 @@ export function useApproveCallback(
       return
     }
 
-    if (!tokenContractLamb) {
-      console.error('tokenContract is null')
-      return
-    }
-
     if (!amountToApprove) {
       console.error('missing amount to approve')
       return
@@ -91,64 +84,32 @@ export function useApproveCallback(
       console.error('no token')
       return
     }
-    if(token.symbol.indexOf('LAMB')<0){
-      estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
+    
+    console.log('allowanceValue lamb3')
+    var allowanceValue = await tokenContract.allowance(account,spender)
+       estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256, MaxUint256).catch(() => {
         // general fallback for tokens who restrict approval amounts
         useExact = true
-        return tokenContract.estimateGas.approve(spender, amountToApprove.raw.toString())
+        return tokenContract.estimateGas.approve(spender, allowanceValue.toString(),amountToApprove.raw.toString())
       })
-      /////
+
+    
+    
 
     return tokenContract
-    .approve(spender, useExact ? amountToApprove.raw.toString() : MaxUint256, {
-      gasLimit: calculateGasMargin(estimatedGas)
-    })
-    .then((response: TransactionResponse) => {
-      addTransaction(response, {
-        summary: 'Approve ' + amountToApprove.currency.symbol,
-        approval: { tokenAddress: token.address, spender: spender }
+      .approve(spender, allowanceValue.toString(),useExact ? amountToApprove.raw.toString() : MaxUint256, {
+        gasLimit: calculateGasMargin(estimatedGas)
       })
-    })
-    .catch((error: Error) => {
-      console.debug('Failed to approve token', error)
-      throw error
-    })
-      /////
-
-    }else{
-      var allowancenum =  await tokenContractLamb.allowance('0x471e0575bFC76d7e189ab3354E0ecb70FCbf3E46',spender)
-
-      estimatedGas = await tokenContractLamb.estimateGas.approve(spender, MaxUint256, MaxUint256).catch(() => {
-        // general fallback for tokens who restrict approval amounts
-        useExact = true
-        return tokenContractLamb.estimateGas.approve(spender,allowancenum.toString() ,amountToApprove.raw.toString())
+      .then((response: TransactionResponse) => {
+        addTransaction(response, {
+          summary: 'Approve ' + amountToApprove.currency.symbol,
+          approval: { tokenAddress: token.address, spender: spender }
+        })
       })
-      /////
-
-    return tokenContractLamb
-    .approve(spender,allowancenum.toString(), useExact ? amountToApprove.raw.toString() : MaxUint256, {
-      gasLimit: calculateGasMargin(estimatedGas)
-    })
-    .then((response: TransactionResponse) => {
-      addTransaction(response, {
-        summary: 'Approve ' + amountToApprove.currency.symbol,
-        approval: { tokenAddress: token.address, spender: spender }
+      .catch((error: Error) => {
+        console.debug('Failed to approve token', error)
+        throw error
       })
-    })
-    .catch((error: Error) => {
-      console.debug('Failed to approve token', error)
-      throw error
-    })
-      /////
-
-    }
-    
-    
-
-    
-    
-
-
   }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction])
 
   return [approvalState, approve]

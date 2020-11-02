@@ -22,6 +22,8 @@ import { PairState } from '../../data/Reserves'
 import { useActiveWeb3React } from '../../hooks'
 import { useCurrency } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
+// import { ApprovalState as ApprovalStateLamb, useApproveCallback as useApproveCallbackLamb } from '../../hooks/useApproveLambCallback'
+
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { Field } from '../../state/mint/actions'
@@ -117,6 +119,7 @@ export default function AddLiquidity({
   )
 
   // check whether the user has approved the router on the tokens
+   console.log('*********************',Field.CURRENCY_A)
   const [approvalA, approveACallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_A], ROUTER_ADDRESS)
   const [approvalB, approveBCallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_B], ROUTER_ADDRESS)
 
