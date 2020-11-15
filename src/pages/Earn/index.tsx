@@ -32,6 +32,8 @@ const PoolSection = styled.div`
 export default function Earn() {
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
+  console.log('stakingInfosPage')
+  console.log(stakingInfos)
 
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
