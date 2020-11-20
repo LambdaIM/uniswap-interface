@@ -38,7 +38,7 @@ export const STAKING_REWARDS_INFO: {
   [ChainId.ROPSTEN]:[
     {
       tokens: [lamb[ChainId.ROPSTEN],lambmain[ChainId.ROPSTEN]],
-      stakingRewardAddress: '0x984D373e287b6d0032d3791054Bdd7A4225256d4'
+      stakingRewardAddress: '0x4659eAD02d8ED3C1c6C93b5cC68a20b88EcC45BD'
     },
   ]
 }
