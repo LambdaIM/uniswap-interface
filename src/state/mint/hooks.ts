@@ -39,6 +39,8 @@ export function useDerivedMintInfo(
 
   const dependentField = independentField === Field.CURRENCY_A ? Field.CURRENCY_B : Field.CURRENCY_A
 
+  console.log('提供流动性')
+
   // tokens
   const currencies: { [field in Field]?: Currency } = useMemo(
     () => ({
