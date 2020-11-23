@@ -31,7 +31,7 @@
 		{
 			"name": "Wrapped lamb main network",
 			"address": "0x12a740ba21fb3c5c20aa05fd96107845dc128e59",
-			"symbol": "vLAMB",
+			"symbol": "tLAMB",
 			"decimals": 18,
 			"chainId": 3,
 			"logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
