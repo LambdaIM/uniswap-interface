@@ -29,9 +29,9 @@
 			"logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xaD6D458402F60fD3Bd25163575031ACDce07538D/logo.png"
 		},
 		{
-			"name": "lambda-main",
-			"address": "0x28f50a131a18894cf8a43ababf90c2aa1d0d55a2",
-			"symbol": "LAMB-M",
+			"name": "Wrapped lamb main network",
+			"address": "0x12a740ba21fb3c5c20aa05fd96107845dc128e59",
+			"symbol": "vLAMB",
 			"decimals": 18,
 			"chainId": 3,
 			"logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"

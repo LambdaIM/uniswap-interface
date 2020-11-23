@@ -91,7 +91,7 @@ export function useApproveCallback(
       console.error('no token')
       return
     }
-    if(token.symbol.indexOf('LAMB')<0){
+    if(token.symbol.indexOf('LAMB')<0||token.symbol == 'tLAMB'){
       estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
         // general fallback for tokens who restrict approval amounts
         useExact = true
@@ -116,7 +116,7 @@ export function useApproveCallback(
       /////
 
     }else{
-      var allowancenum =  await tokenContractLamb.allowance('0x471e0575bFC76d7e189ab3354E0ecb70FCbf3E46',spender)
+      var allowancenum =  await tokenContractLamb.allowance(account,spender)
 
       estimatedGas = await tokenContractLamb.estimateGas.approve(spender, MaxUint256, MaxUint256).catch(() => {
         // general fallback for tokens who restrict approval amounts
@@ -149,7 +149,7 @@ export function useApproveCallback(
     
 
 
-  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction])
+  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction,account])
 
   return [approvalState, approve]
 }
