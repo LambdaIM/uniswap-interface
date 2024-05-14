@@ -22,7 +22,8 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   3: 'ropsten.',
   4: 'rinkeby.',
   5: 'goerli.',
-  42: 'kovan.'
+  42: 'kovan.',
+  56026: 'https://scan.lambda.im'
 }
 
 export function getEtherscanLink(
@@ -30,7 +31,10 @@ export function getEtherscanLink(
   data: string,
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
+  let prefix = ETHERSCAN_PREFIXES[chainId]
+  if (ChainId.LAMBDA !== chainId) {
+    prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
+  }
 
   switch (type) {
     case 'transaction': {

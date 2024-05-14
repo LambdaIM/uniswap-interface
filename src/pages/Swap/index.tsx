@@ -475,6 +475,9 @@ export default function Swap() {
         </Wrapper>
       </AppBody>
       <AdvancedSwapDetailsDropdown trade={trade} />
+      <Text fontSize={13} fontWeight={500}>
+        The DApp is a fork on Lambda Chain based on Uniswap Protocol.
+      </Text>
     </>
   )
 }

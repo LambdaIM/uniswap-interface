@@ -84,6 +84,7 @@ const HeaderElement = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  width: auto;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
    flex-direction: row-reverse;
@@ -160,6 +161,7 @@ const HideSmall = styled.span`
 const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
+  white-space: nowrap;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     margin: 0;
     margin-right: 0.5rem;
@@ -258,10 +260,12 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
+  [ChainId.MAINNET]: 'Ethereum',
   [ChainId.RINKEBY]: 'Rinkeby',
   [ChainId.ROPSTEN]: 'Ropsten',
   [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan'
+  [ChainId.KOVAN]: 'Kovan',
+  [ChainId.LAMBDA]: 'Lambda Chain'
 }
 
 export default function Header() {
@@ -314,14 +318,14 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
-            UNI
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            Vote
-          </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
-            Charts <span style={{ fontSize: '11px' }}>↗</span>
+          {/*<StyledNavLink id={`stake-nav-link`} to={'/uni'}>*/}
+          {/*  UNI*/}
+          {/*</StyledNavLink>*/}
+          {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
+          {/*  Vote*/}
+          {/*</StyledNavLink>*/}
+          <StyledExternalLink id={`stake-nav-link`} href={'https://portal.lambda.im/airdrop'}>
+            Airdrop <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
@@ -336,7 +340,7 @@ export default function Header() {
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? <Dots>Claiming UNI</Dots> : 'Claim UNI'}
+                  {claimTxn && !claimTxn?.receipt ? <Dots>Claiming LAMBDA</Dots> : 'Claim LAMBDA'}
                 </TYPE.white>
               </UNIAmount>
               <CardNoise />
@@ -363,7 +367,7 @@ export default function Header() {
                     </TYPE.white>
                   </HideSmall>
                 )}
-                UNI
+                LAMBDA
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>
