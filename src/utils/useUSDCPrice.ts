@@ -26,7 +26,7 @@ export default function useUSDCPrice(currency?: Currency): Price | undefined {
       [wrapped?.equals(stable) ? undefined : wrapped, chainId === ChainId.MAINNET ? stable : undefined],
       [chainId ? WETH[chainId] : undefined, chainId === ChainId.MAINNET ? stable : undefined]
     ],
-    [chainId, currency, wrapped]
+    [chainId, currency, stable, wrapped]
   )
   const [[ethPairState, ethPair], [usdcPairState, usdcPair], [usdcEthPairState, usdcEthPair]] = usePairs(tokenPairs)
 
@@ -67,5 +67,16 @@ export default function useUSDCPrice(currency?: Currency): Price | undefined {
       }
     }
     return undefined
-  }, [chainId, currency, ethPair, ethPairState, usdcEthPair, usdcEthPairState, usdcPair, usdcPairState, wrapped])
+  }, [
+    chainId,
+    currency,
+    ethPair,
+    ethPairState,
+    stable,
+    usdcEthPair,
+    usdcEthPairState,
+    usdcPair,
+    usdcPairState,
+    wrapped
+  ])
 }

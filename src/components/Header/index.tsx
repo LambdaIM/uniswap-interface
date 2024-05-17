@@ -324,6 +324,9 @@ export default function Header() {
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
           {/*  Vote*/}
           {/*</StyledNavLink>*/}
+          <StyledExternalLink id={`stake-nav-link`} href={'https://v2info.swap.lambda.im'}>
+            Analytics <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledExternalLink>
           <StyledExternalLink id={`stake-nav-link`} href={'https://portal.lambda.im/airdrop'}>
             Airdrop <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
