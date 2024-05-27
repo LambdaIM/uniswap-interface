@@ -17,6 +17,7 @@ import {
   FEI,
   FRAX,
   FXS,
+  LAMBDA,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -26,6 +27,7 @@ import {
   SWISE,
   TRIBE,
   USDC_ARBITRUM,
+  USDC_LAMBDA,
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
@@ -86,6 +88,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WETH_POLYGON,
   ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
+  [SupportedChainId.LAMBDA]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.LAMBDA], USDC_LAMBDA, LAMBDA],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [SupportedChainId.MAINNET]: {
@@ -184,6 +187,11 @@ export const COMMON_BASES: ChainCurrencyList = {
     nativeOnChain(SupportedChainId.CELO_ALFAJORES),
     CUSD_CELO_ALFAJORES,
     CEUR_CELO_ALFAJORES,
+  ],
+  [SupportedChainId.LAMBDA]: [
+    nativeOnChain(SupportedChainId.LAMBDA),
+    USDC_LAMBDA,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.LAMBDA] as Token,
   ],
 }
 

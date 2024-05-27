@@ -1,13 +1,14 @@
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
 import arbitrumLogoUrl from 'assets/svg/arbitrum_logo.svg'
 import celoLogo from 'assets/svg/celo_logo.svg'
+import lambdaLogoUrl from 'assets/svg/lambda_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import ms from 'ms.macro'
 import { colorsDark } from 'theme/colors'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, OPTIMISM_LIST } from './lists'
+import { LAMBDA_LIST } from './lists'
 
 export enum NetworkType {
   L1,
@@ -104,7 +105,7 @@ const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
     bridge: 'https://app.optimism.io/bridge',
-    defaultListUrl: OPTIMISM_LIST,
+    defaultListUrl: '',
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
@@ -120,7 +121,7 @@ const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
     bridge: 'https://app.optimism.io/bridge',
-    defaultListUrl: OPTIMISM_LIST,
+    defaultListUrl: '',
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
@@ -140,7 +141,7 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.uniswap.org/#/arbitrum',
     label: 'Arbitrum',
     logoUrl: arbitrumLogoUrl,
-    defaultListUrl: ARBITRUM_LIST,
+    defaultListUrl: '',
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     color: colorsDark.chain_42,
@@ -155,7 +156,7 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.uniswap.org/#/arbitrum/',
     label: 'Arbitrum Rinkeby',
     logoUrl: arbitrumLogoUrl,
-    defaultListUrl: ARBITRUM_LIST,
+    defaultListUrl: '',
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
     nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
     color: colorsDark.chain_421611,
@@ -194,7 +195,7 @@ const CHAIN_INFO: ChainInfoMap = {
     label: 'Celo',
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
-    defaultListUrl: CELO_LIST,
+    defaultListUrl: '',
   },
   [SupportedChainId.CELO_ALFAJORES]: {
     networkType: NetworkType.L1,
@@ -206,7 +207,20 @@ const CHAIN_INFO: ChainInfoMap = {
     label: 'Celo Alfajores',
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
-    defaultListUrl: CELO_LIST,
+    defaultListUrl: '',
+  },
+  [SupportedChainId.LAMBDA]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms`25m`,
+    bridge: 'https://portal.lambda.im/bridge',
+    docs: 'https://docs.lambda.im',
+    explorer: 'https://scan.lambda.im',
+    infoLink: 'https://v3info.swap.lambda.im/#/lambda/',
+    label: 'Lambda',
+    logoUrl: lambdaLogoUrl,
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    defaultListUrl: LAMBDA_LIST,
+    color: colorsDark.chain_1,
   },
 }
 

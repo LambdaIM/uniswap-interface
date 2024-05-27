@@ -187,6 +187,8 @@ const BridgeLabel = ({ chainId }: { chainId: SupportedChainId }) => {
     case SupportedChainId.CELO:
     case SupportedChainId.CELO_ALFAJORES:
       return <Trans>Portal Bridge</Trans>
+    case SupportedChainId.LAMBDA:
+      return <Trans>Lambda Bridge</Trans>
     default:
       return <Trans>Bridge</Trans>
   }
@@ -205,6 +207,8 @@ const ExplorerLabel = ({ chainId }: { chainId: SupportedChainId }) => {
     case SupportedChainId.CELO:
     case SupportedChainId.CELO_ALFAJORES:
       return <Trans>Blockscout</Trans>
+    case SupportedChainId.LAMBDA:
+      return <Trans>Lambda Explorer</Trans>
     default:
       return <Trans>Etherscan</Trans>
   }
@@ -273,11 +277,12 @@ function Row({
 }
 
 const NETWORK_SELECTOR_CHAINS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.CELO,
+  // SupportedChainId.MAINNET,
+  // SupportedChainId.POLYGON,
+  // SupportedChainId.OPTIMISM,
+  // SupportedChainId.ARBITRUM_ONE,
+  // SupportedChainId.CELO,
+  SupportedChainId.LAMBDA,
 ]
 
 export default function NetworkSelector() {

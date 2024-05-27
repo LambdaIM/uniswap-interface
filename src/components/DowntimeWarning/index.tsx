@@ -75,7 +75,15 @@ export default function DowntimeWarning() {
           </Trans>
         </Wrapper>
       )
-
+    case SupportedChainId.LAMBDA:
+      return (
+        <Wrapper>
+          <Trans>
+            Optimism is in Beta and may experience downtime.
+            <ReadMoreLink href="https://help.uniswap.org/en/articles">Read more.</ReadMoreLink>
+          </Trans>
+        </Wrapper>
+      )
     default:
       return null
   }

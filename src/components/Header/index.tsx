@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import { getChainInfoOrDefault } from 'constants/chainInfo'
-import { SupportedChainId } from 'constants/chains'
+// import { SupportedChainId } from 'constants/chains'
 import { ExploreVariant, useExploreFlag } from 'featureFlags/flags/explore'
 import useTheme from 'hooks/useTheme'
 import { darken } from 'polished'
@@ -305,13 +305,17 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        {(!chainId || chainId === SupportedChainId.MAINNET) && (
-          <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
-            <Trans>Vote</Trans>
-          </StyledNavLink>
-        )}
+        {/*{(!chainId || chainId === SupportedChainId.MAINNET) && (*/}
+        {/*  <StyledNavLink id={`vote-nav-link`} to={'/vote'}>*/}
+        {/*    <Trans>Vote</Trans>*/}
+        {/*  </StyledNavLink>*/}
+        {/*)}*/}
         <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
           <Trans>Charts</Trans>
+          <sup>↗</sup>
+        </StyledExternalLink>
+        <StyledExternalLink id={`v2-nav-link`} href="https://swap.lambda.im">
+          <Trans>V2</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
       </HeaderLinks>
@@ -327,10 +331,10 @@ export default function Header() {
                 <ThemedText.DeprecatedWhite padding="0 2px">
                   {claimTxn && !claimTxn?.receipt ? (
                     <Dots>
-                      <Trans>Claiming UNI</Trans>
+                      <Trans>Claiming LAMBDA</Trans>
                     </Dots>
                   ) : (
-                    <Trans>Claim UNI</Trans>
+                    <Trans>Claim LAMBDA</Trans>
                   )}
                 </ThemedText.DeprecatedWhite>
               </UNIAmount>

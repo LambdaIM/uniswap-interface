@@ -123,6 +123,23 @@ export const DAI_OPTIMISM = new Token(
   'DAI',
   'Dai stable coin'
 )
+
+export const USDC_LAMBDA = new Token(
+  SupportedChainId.LAMBDA,
+  '0x026C48C2976EF967ad92439C20389fFE5110A043',
+  6,
+  'USDC',
+  'USDC Bridged'
+)
+
+export const LAMBDA = new Token(
+  SupportedChainId.LAMBDA,
+  '0x99344442308EDb5Ee0b6cca5e54D1355679357Fa',
+  18,
+  'LAMBDA',
+  'Lambda'
+)
+
 export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.MAINNET]: USDC_MAINNET,
   [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM,
@@ -137,6 +154,7 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.RINKEBY]: USDC_RINKEBY,
   [SupportedChainId.KOVAN]: USDC_KOVAN,
   [SupportedChainId.ROPSTEN]: USDC_ROPSTEN,
+  [SupportedChainId.LAMBDA]: USDC_LAMBDA,
 }
 export const DAI_POLYGON = new Token(
   SupportedChainId.POLYGON,
@@ -388,6 +406,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'WMATIC',
     'Wrapped MATIC'
   ),
+  [SupportedChainId.LAMBDA]: new Token(
+    SupportedChainId.LAMBDA,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
 }
 
 export function isCelo(chainId: number): chainId is SupportedChainId.CELO | SupportedChainId.CELO_ALFAJORES {
@@ -470,5 +495,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
+    [SupportedChainId.LAMBDA]: USDC_LAMBDA.address,
   },
 }

@@ -94,6 +94,16 @@ export default function RadialGradientByChainUpdater(): null {
           ? 'overlay,normal'
           : 'multiply,normal'
         break
+      case SupportedChainId.LAMBDA:
+        setBackground(backgroundResetStyles)
+        const lambdaLightGradient = redesignFlagEnabled
+          ? 'radial-gradient(100% 100% at 50% 0%, rgba(255, 251, 242, 0.8) 0%, rgba(255, 244, 249, 0.6958) 50.52%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
+          : 'radial-gradient(150% 100% at 50% 0%, #FFFBF2 2%, #FFF4F9 53%, #FFFFFF 100%)'
+        const lambdaDarkGradient = redesignFlagEnabled
+          ? 'radial-gradient(100% 100% at 50% 0%, rgba(62, 46, 56, 0.8) 0%, rgba(44, 31, 45, 0.6958) 50.52%, rgba(31, 33, 40, 0) 100%), #0D0E0E'
+          : 'radial-gradient(150% 100% at 50% 0%, #3E2E38 2%, #2C1F2D 53%, #1F2128 100%)'
+        backgroundRadialGradientElement.style.background = darkMode ? lambdaDarkGradient : lambdaLightGradient
+        break
       default:
         setBackground(initialStyles)
         const defaultLightGradient = redesignFlagEnabled

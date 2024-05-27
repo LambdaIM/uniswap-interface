@@ -850,6 +850,9 @@ export default function Swap() {
             currencies={[currencies[Field.INPUT], currencies[Field.OUTPUT]]}
           />
         )}
+        <Text fontSize={13} fontWeight={500} marginTop={20}>
+          The DApp is a fork on Lambda Chain based on Uniswap Protocol.
+        </Text>
       </>
     </Trace>
   )
