@@ -81,7 +81,7 @@ export default function V2PositionCard({ pair, border, stakedBalance }: Position
       <CardNoise />
       <AutoColumn gap="12px">
         <FixedHeightRow>
-          <AutoRow gap="8px">
+          <AutoRow gap="8px" width="initial">
             <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={20} />
             <Text fontWeight={500} fontSize={20}>
               {!currency0 || !currency1 ? (
