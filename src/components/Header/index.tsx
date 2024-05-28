@@ -330,6 +330,9 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={'https://portal.lambda.im/airdrop'}>
             Airdrop <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://swap.lambda.im'}>
+            V3 <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
