@@ -314,7 +314,7 @@ export default function Header() {
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
-        <StyledExternalLink id={`v2-nav-link`} href="https://swap.lambda.im">
+        <StyledExternalLink id={`v2-nav-link`} href="https://v2.swap.lambda.im">
           <Trans>V2</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
