@@ -126,10 +126,26 @@ export const DAI_OPTIMISM = new Token(
 
 export const USDC_LAMBDA = new Token(
   SupportedChainId.LAMBDA,
-  '0x026C48C2976EF967ad92439C20389fFE5110A043',
+  '0xb62F35B9546A908d11c5803ecBBA735AbC3E3eaE',
   6,
   'USDC',
   'USDC Bridged'
+)
+
+export const USDT_LAMBDA = new Token(
+  SupportedChainId.LAMBDA,
+  '0x05D032ac25d322df992303dCa074EE7392C117b9',
+  6,
+  'USDT',
+  'USDT Bridged'
+)
+
+export const DAI_LAMBDA = new Token(
+  SupportedChainId.LAMBDA,
+  '0x6c851F501a3F24E29A8E39a29591cddf09369080',
+  18,
+  'DAI',
+  'DAI Bridged'
 )
 
 export const LAMBDA = new Token(

@@ -11,13 +11,13 @@ import {
   CUSD_CELO_ALFAJORES,
   DAI,
   DAI_ARBITRUM_ONE,
+  DAI_LAMBDA,
   DAI_OPTIMISM,
   DAI_POLYGON,
   ETH2X_FLI,
   FEI,
   FRAX,
   FXS,
-  LAMBDA,
   nativeOnChain,
   PORTAL_ETH_CELO,
   PORTAL_USDC_CELO,
@@ -33,6 +33,7 @@ import {
   USDC_POLYGON,
   USDT,
   USDT_ARBITRUM_ONE,
+  USDT_LAMBDA,
   USDT_OPTIMISM,
   USDT_POLYGON,
   WBTC,
@@ -88,7 +89,12 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WETH_POLYGON,
   ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
-  [SupportedChainId.LAMBDA]: [...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.LAMBDA], USDC_LAMBDA, LAMBDA],
+  [SupportedChainId.LAMBDA]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.LAMBDA],
+    USDC_LAMBDA,
+    USDT_LAMBDA,
+    DAI_LAMBDA,
+  ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [SupportedChainId.MAINNET]: {
